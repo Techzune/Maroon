@@ -6,55 +6,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 >
-    <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/griffishall"
-            android:scaleType="centerCrop" android:id="@+id/imageView6"/>
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:weightSum="2">
-        <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                app:srcCompat="@drawable/logoimage_white"
-                android:layout_weight="1"/>
-        <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp" android:layout_weight="1">
 
-            <Button
-                    android:text="I am a student"
-                    android:layout_width="match_parent"
-                    android:layout_height="64dp"
-                    android:id="@+id/button2"
-                    android:layout_marginTop="64dp"
-                    android:layout_marginStart="42dp"
-                    android:layout_marginEnd="42dp"
-                    android:fontFamily="casual"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorWhite"
-                    android:textAllCaps="false"
-                    android:background="@drawable/background_button_gradient"/>
-
-            <Button
-                    android:text="I am not a student"
-                    android:layout_width="match_parent"
-                    android:layout_height="64dp"
-                    android:layout_below="@id/button2"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginStart="42dp"
-                    android:layout_marginEnd="42dp"
-                    android:fontFamily="casual"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorWhite"
-                    android:textAllCaps="false"
-                    android:background="@drawable/background_button_gradient"/>
-
-        </RelativeLayout>
-    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
