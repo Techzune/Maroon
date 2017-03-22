@@ -28,7 +28,7 @@
             <Button
                     android:text="I am a student"
                     android:layout_width="match_parent"
-                    android:layout_height="52dp"
+                    android:layout_height="64dp"
                     android:id="@+id/button2"
                     android:layout_marginTop="64dp"
                     android:layout_marginStart="42dp"
@@ -43,7 +43,7 @@
             <Button
                     android:text="I am not a student"
                     android:layout_width="match_parent"
-                    android:layout_height="52dp"
+                    android:layout_height="64dp"
                     android:layout_below="@id/button2"
                     android:layout_marginTop="16dp"
                     android:layout_marginStart="42dp"
