@@ -5,6 +5,7 @@
     <color name="colorAccent">#e1e1e1</color>
 
     <color name="colorStartStatusBar">#97AEBC</color>
+    <color name="colorStartBackground">#abbec9</color>
 
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
