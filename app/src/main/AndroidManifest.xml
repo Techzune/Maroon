@@ -15,6 +15,7 @@
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".StartActivity"
+                  android:theme="@style/AppTheme.Start"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

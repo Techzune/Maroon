@@ -4,7 +4,10 @@
     <color name="colorPrimaryDark">#530000</color>
     <color name="colorAccent">#FFFFFF</color>
 
+    <color name="colorStartStatusBar">#97AEBC</color>
+
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
     <color name="colorDarkGrey">#393B3C</color>
     <color name="colorGold">#FFB81C</color>
 </resources>
