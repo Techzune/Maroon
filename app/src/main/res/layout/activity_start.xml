@@ -44,9 +44,9 @@
             <Button
                     android:id="@+id/start_button_nonstudent"
                     android:layout_width="match_parent"
-                    android:layout_height="64dp"
+                    android:layout_height="72dp"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="64dp"
+                    android:layout_marginBottom="72dp"
                     android:layout_marginStart="42dp"
                     android:layout_marginEnd="42dp"
                     android:text="@string/start_nonstudent"
@@ -59,7 +59,7 @@
             <Button
                     android:id="@+id/start_button_student"
                     android:layout_width="match_parent"
-                    android:layout_height="64dp"
+                    android:layout_height="72dp"
                     android:layout_above="@id/start_button_nonstudent"
                     android:layout_marginBottom="24dp"
                     android:layout_marginStart="42dp"
