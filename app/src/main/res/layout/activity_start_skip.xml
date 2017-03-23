@@ -23,7 +23,7 @@
                 android:textStyle="bold"
                 android:fontFamily="cursive"
                 android:textColor="@color/colorWhite"
-                android:textSize="48sp"
+                android:textSize="48dp"
                 tools:ignore="SpUsage"/>
 
         <Button
