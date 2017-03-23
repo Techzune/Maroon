@@ -45,7 +45,7 @@
                 android:layout_below="@id/startskip_text_major"
                 android:layout_above="@id/startskip_button_begin"
                 android:src="@drawable/ic_check_circle_green_startskip"
-                android:padding="48dp"
+                android:padding="60dp"
                 android:contentDescription="@string/desc_checkMarkImage"/>
 
     </RelativeLayout>
