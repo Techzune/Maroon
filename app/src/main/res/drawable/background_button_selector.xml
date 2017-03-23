@@ -6,7 +6,7 @@
             <item android:left="3dp" android:top="3dp">
                 <shape>
                     <solid android:color="@color/colorAccent" />
-                    <corners android:radius="25dp"/>
+                    <corners android:radius="8dp"/>
                 </shape>
             </item>
         </layer-list>
@@ -17,14 +17,18 @@
             <item android:left="2dp" android:top="2dp">
                 <shape>
                     <solid android:color="#66000000" />
-                    <corners android:radius="25dp"/>
+                    <corners android:radius="8dp"/>
                 </shape>
             </item>
             <!-- CONTENT LAYER -->
             <item android:bottom="3dp" android:right="3dp">
                 <shape>
-                    <solid android:color="@color/colorAccent" />
-                    <corners android:radius="25dp"/>
+                    <corners android:radius="8dp"/>
+                    <gradient
+                            android:startColor="#f0f0f0"
+                            android:centerColor="#ffffff"
+                            android:endColor="#f0f0f0"
+                            android:angle="315"/>
                 </shape>
             </item>
         </layer-list>
