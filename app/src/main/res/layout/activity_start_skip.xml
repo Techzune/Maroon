@@ -5,6 +5,24 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.operontech.maroon.ActivityStartSkip" android:background="@color/colorStartBackground">
+        android:background="@color/colorStartBackground"
+        tools:context="com.operontech.maroon.ActivityStartSkip">
 
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:gravity="center"
+                android:text="Let's Begin!"
+                android:textStyle="bold"
+                android:fontFamily="cursive"
+                android:textColor="@color/colorWhite"
+                android:textSize="48dp"
+                tools:ignore="SpUsage"/>
+    </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>
