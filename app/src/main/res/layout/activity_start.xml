@@ -6,6 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:ignore="SpUsage">
+
     <ImageView
             android:id="@+id/start_image_background"
             android:layout_width="match_parent"
@@ -13,24 +14,32 @@
             app:srcCompat="@drawable/griffishall"
             android:scaleType="centerCrop"
             android:contentDescription="@string/desc_backgroundImage"/>
-    <LinearLayout
+
+    <RelativeLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:weightSum="2"
             android:clipChildren="false">
-        <ImageView
-                android:id="@+id/start_image_logo"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                app:srcCompat="@drawable/logoimage_white"
-                android:layout_weight="0.8"
-                android:contentDescription="@string/desc_logoImage"/>
+
         <RelativeLayout
+                android:id="@+id/start_layout_bottom"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1.2"
+                android:layout_height="320dp"
+                android:layout_alignParentBottom="true"
                 android:clipChildren="false">
+
+            <TextView
+                    android:id="@+id/start_text_welcome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="center"
+                    android:text="@string/welcome_plain"
+                    android:fontFamily="cursive"
+                    android:textSize="48dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"/>
 
             <Button
                     android:id="@+id/start_button_nonstudent"
@@ -62,20 +71,25 @@
                     android:textAllCaps="false"
                     android:background="@drawable/background_button_selector"/>
 
-            <TextView
-                    android:id="@+id/start_text_welcome"
+        </RelativeLayout>
+
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_above="@id/start_layout_bottom">
+
+            <ImageView
+                    android:id="@+id/start_image_logo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="64dp"
-                    android:layout_above="@id/start_button_student"
                     android:layout_gravity="center"
-                    android:text="@string/welcome_plain"
-                    android:fontFamily="cursive"
-                    android:textSize="48dp"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite"/>
 
-        </RelativeLayout>
-    </LinearLayout>
+                    android:padding="24dp"
+                    app:srcCompat="@drawable/logoimage_icon"
+                    android:contentDescription="@string/desc_logoImage"/>
+
+        </FrameLayout>
+
+    </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>
