@@ -7,14 +7,4 @@
         android:layout_height="match_parent"
         tools:context="com.operontech.maroon.ActivityStartSkip" android:background="@color/colorStartBackground">
 
-    <TextView
-            android:text="Wow, progress."
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="56dp"
-            android:fontFamily="cursive"
-            android:textColor="@color/colorWhite"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:gravity="center"/>
 </android.support.design.widget.CoordinatorLayout>
