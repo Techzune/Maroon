@@ -11,4 +11,7 @@
     <color name="colorBlack">#000000</color>
     <color name="colorDarkGrey">#393B3C</color>
     <color name="colorGold">#FFB81C</color>
+
+
+    <color name="colorDarkGreyTransp">#ab393b3c</color>
 </resources>
