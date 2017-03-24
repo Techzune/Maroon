@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorStartBackground"
-        tools:context="com.operontech.maroon.ActivityStartSkip">
+        tools:context="com.operontech.maroon.ActivityStartLast">
 
     <RelativeLayout
             android:layout_width="match_parent"
@@ -14,7 +14,7 @@
             android:paddingBottom="64dp">
 
         <TextView
-                android:id="@+id/startskip_text_major"
+                android:id="@+id/startLast_text_major"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="32dp"
@@ -27,7 +27,7 @@
                 tools:ignore="SpUsage"/>
 
         <Button
-                android:id="@+id/startskip_button_begin"
+                android:id="@+id/startLast_button_begin"
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
                 android:layout_alignParentBottom="true"
@@ -42,9 +42,9 @@
         <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/startskip_text_major"
-                android:layout_above="@id/startskip_button_begin"
-                android:src="@drawable/ic_check_circle_green_startskip"
+                android:layout_below="@id/startLast_text_major"
+                android:layout_above="@id/startLast_button_begin"
+                android:src="@drawable/ic_check_circle_green_background"
                 android:padding="56dp"
                 android:contentDescription="@string/desc_checkMarkImage"/>
 

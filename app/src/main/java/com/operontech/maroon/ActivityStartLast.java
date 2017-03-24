@@ -3,12 +3,12 @@ package com.operontech.maroon;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-public class ActivityStartSkip extends AppCompatActivity {
+public class ActivityStartLast extends AppCompatActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_start_skip);
+		setContentView(R.layout.activity_start_last);
 	}
 
 	@Override

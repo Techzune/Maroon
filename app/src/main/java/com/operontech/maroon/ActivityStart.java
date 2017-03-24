@@ -22,7 +22,7 @@ public class ActivityStart extends AppCompatActivity {
 		buttonNonStudent.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				Intent intent = new Intent(ActivityStart.this, ActivityStartSkip.class);
+				Intent intent = new Intent(ActivityStart.this, ActivityStartLast.class);
 				startActivity(intent);
 				overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 			}
