@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="oval">
-            <solid android:color="@color/colorDarkGrey"/>
+            <solid android:color="#616161"/>
         </shape>
     </item>
     <item android:gravity="center" android:drawable="@drawable/ic_check_circle_green_48px"/>

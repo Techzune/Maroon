@@ -9,7 +9,8 @@
 
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
-    <color name="colorDarkGrey">#393B3C</color>
+    <color name="colorGrey">#757575</color>
+    <color name="colorDarkGrey">#424242</color>
     <color name="colorGold">#FFB81C</color>
 
 
