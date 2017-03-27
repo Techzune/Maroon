@@ -19,9 +19,12 @@ public class ActivityStartLast extends AppCompatActivity {
 		finishButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				Intent intent = new Intent(ActivityStartLast.this, ActivityMain.class);
-				startActivity(intent);
+				Intent newIntent = new Intent(ActivityStartLast.this, ActivityMain.class);
+				newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+				newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				startActivity(newIntent);
 				overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+				finish();
 			}
 		});
 	}
