@@ -5,23 +5,23 @@
         <item
                 android:id="@+id/nav_home"
                 android:icon="@drawable/ic_action_home"
-                android:title="Home"/>
+                android:title="@string/nav_text_home"/>
         <item
                 android:id="@+id/nav_map"
                 android:icon="@drawable/ic_menu_gallery"
-                android:title="Campus Map"/>
+                android:title="@string/nav_text_map"/>
     </group>
 
-    <item android:title="More">
+    <item android:title="@string/nav_text_more">
         <menu>
             <item
                     android:id="@+id/nav_share"
                     android:icon="@drawable/ic_action_preferences"
-                    android:title="Preferences"/>
+                    android:title="@string/nav_text_preferences"/>
             <item
                     android:id="@+id/nav_send"
                     android:icon="@drawable/ic_action_info"
-                    android:title="About"/>
+                    android:title="@string/nav_text_about"/>
         </menu>
     </item>
 
