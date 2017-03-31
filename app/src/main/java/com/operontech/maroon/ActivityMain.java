@@ -2,6 +2,7 @@ package com.operontech.maroon;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -81,7 +82,8 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 	}
 
 	@Override
-	public boolean onNavigationItemSelected(final MenuItem item) {
+	public boolean onNavigationItemSelected(@NonNull
+	final MenuItem item) {
 		final int id = item.getItemId();
 
 		switch (id) {
