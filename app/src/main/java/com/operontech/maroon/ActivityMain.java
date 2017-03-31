@@ -2,7 +2,6 @@ package com.operontech.maroon;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -27,7 +26,7 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 	private FragmentManager fManager;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		// Set up the main content (fragment)
@@ -37,25 +36,25 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 		setContentView(R.layout.activity_main);
 
 		// Set up the toolbar
-		Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+		final Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
 		setSupportActionBar(toolbar);
 
-		FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.main_fab);
+		final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.main_fab);
 		fab.setOnClickListener(new View.OnClickListener() {
 			@Override
-			public void onClick(View view) {
+			public void onClick(final View view) {
 				Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 			}
 		});
 
 		// Set up the navigation drawer
-		DrawerLayout drawer = (DrawerLayout) findViewById(R.id.main_drawerLayout);
-		ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+		final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.main_drawerLayout);
+		final ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 		drawer.addDrawerListener(toggle);
 		toggle.syncState();
 
 		// Set up navigation view listener
-		NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+		final NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 		navigationView.setNavigationItemSelectedListener(this);
 
 		// Set up Mapbox
@@ -64,7 +63,7 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 
 	@Override
 	public void onBackPressed() {
-		DrawerLayout drawer = (DrawerLayout) findViewById(R.id.main_drawerLayout);
+		final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.main_drawerLayout);
 		if (drawer.isDrawerOpen(GravityCompat.START)) {
 			drawer.closeDrawer(GravityCompat.START);
 		} else if (fManager.getBackStackEntryCount() == 0 && !backButtonExitTriggered) {
@@ -82,8 +81,8 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 	}
 
 	@Override
-	public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-		int id = item.getItemId();
+	public boolean onNavigationItemSelected(final MenuItem item) {
+		final int id = item.getItemId();
 
 		switch (id) {
 		case R.id.nav_home:
@@ -99,7 +98,7 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 			break;
 		}
 
-		DrawerLayout drawer = (DrawerLayout) findViewById(R.id.main_drawerLayout);
+		final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.main_drawerLayout);
 		drawer.closeDrawer(GravityCompat.START);
 		return true;
 	}
