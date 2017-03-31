@@ -12,7 +12,7 @@ public class ActivityStart extends AppCompatActivity {
 	Button buttonNonStudent;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start);
 
@@ -21,8 +21,8 @@ public class ActivityStart extends AppCompatActivity {
 
 		buttonNonStudent.setOnClickListener(new View.OnClickListener() {
 			@Override
-			public void onClick(View view) {
-				Intent intent = new Intent(ActivityStart.this, ActivityStartLast.class);
+			public void onClick(final View view) {
+				final Intent intent = new Intent(ActivityStart.this, ActivityStartLast.class);
 				startActivity(intent);
 				overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 			}

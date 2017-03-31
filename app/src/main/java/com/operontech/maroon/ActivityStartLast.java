@@ -11,15 +11,15 @@ public class ActivityStartLast extends AppCompatActivity {
 	Button finishButton;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start_last);
 
 		finishButton = (Button) findViewById(R.id.startLast_button_begin);
 		finishButton.setOnClickListener(new View.OnClickListener() {
 			@Override
-			public void onClick(View view) {
-				Intent newIntent = new Intent(ActivityStartLast.this, ActivityMain.class);
+			public void onClick(final View view) {
+				final Intent newIntent = new Intent(ActivityStartLast.this, ActivityMain.class);
 				newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 				newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				startActivity(newIntent);

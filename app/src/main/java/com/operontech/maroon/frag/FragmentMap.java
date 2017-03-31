@@ -15,8 +15,8 @@ public class FragmentMap extends Fragment {
 	MapboxMap mMap;
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_map, container, false);
+	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
+		final View view = inflater.inflate(R.layout.fragment_map, container, false);
 
 		mapView = (MapView) view.findViewById(R.id.map_mapview);
 
@@ -24,7 +24,7 @@ public class FragmentMap extends Fragment {
 		mapView.onCreate(savedInstanceState);
 		mapView.getMapAsync(new OnMapReadyCallback() {
 			@Override
-			public void onMapReady(MapboxMap mapboxMap) {
+			public void onMapReady(final MapboxMap mapboxMap) {
 				mMap = mapboxMap;
 
 				// Visual adjustments
@@ -51,7 +51,7 @@ public class FragmentMap extends Fragment {
 	}
 
 	@Override
-	public void onSaveInstanceState(Bundle outState) {
+	public void onSaveInstanceState(final Bundle outState) {
 		super.onSaveInstanceState(outState);
 		if (mapView != null) {
 			mapView.onSaveInstanceState(outState);
