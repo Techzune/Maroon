@@ -82,6 +82,11 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 		case R.id.nav_map:
 			showFragment(new FragmentMap());
 			break;
+
+		case R.id.nav_preferences:
+			break;
+		case R.id.nav_about:
+			break;
 		}
 
 		DrawerLayout drawer = (DrawerLayout) findViewById(R.id.main_drawerLayout);
