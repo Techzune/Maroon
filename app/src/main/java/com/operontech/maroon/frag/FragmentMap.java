@@ -1,30 +1,37 @@
 package com.operontech.maroon.frag;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.mapbox.mapboxsdk.maps.MapView;
+import com.mapbox.mapboxsdk.maps.MapboxMap;
+import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.operontech.maroon.R;
 
 public class FragmentMap extends Fragment {
 	MapView mapView;
+	MapboxMap mMap;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_map, container, false);
-		mapView = (MapView) view.findViewById(R.id.map_mapview);
-		return view;
-	}
 
-	@Override
-	public void onCreate(@Nullable Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		if (mapView != null) {
-			mapView.onCreate(savedInstanceState);
-		}
+		mapView = (MapView) view.findViewById(R.id.map_mapview);
+
+		// Create the mapView
+		mapView.onCreate(savedInstanceState);
+		mapView.getMapAsync(new OnMapReadyCallback() {
+			@Override
+			public void onMapReady(MapboxMap mapboxMap) {
+				mMap = mapboxMap;
+
+				// Visual adjustments
+				mMap.getMyLocationViewSettings().setAccuracyAlpha(0);
+			}
+		});
+		return view;
 	}
 
 	@Override

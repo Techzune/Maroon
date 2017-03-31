@@ -20,7 +20,7 @@
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.25">
+                android:layout_weight="0.2">
 
             <TextView
                     android:id="@+id/home_text_welcome"
@@ -28,18 +28,22 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:gravity="center"
-                    android:text="Good Morning"
+                    android:text="Good Morning!"
                     android:fontFamily="cursive"
-                    android:textSize="42sp"
+                    android:textSize="48dp"
                     android:textStyle="bold"
-                    android:textColor="@color/colorWhite"/>
+                    android:textColor="@color/colorWhite"
+                    android:shadowColor="@color/colorDarkGreyTransp"
+                    android:shadowRadius="1.5"
+                    android:shadowDx="3"
+                    android:shadowDy="3"/>
         </RelativeLayout>
 
         <android.support.v7.widget.RecyclerView
                 android:id="@+id/home_recycler_schedule"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.75">
+                android:layout_weight="0.8">
         </android.support.v7.widget.RecyclerView>
 
     </LinearLayout>

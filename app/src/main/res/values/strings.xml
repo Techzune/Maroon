@@ -1,13 +1,14 @@
 <resources>
     <string name="app_name">Maroon</string>
 
+    <string name="mapbox_access_token">
+        pk.eyJ1IjoidGVjaHp1bmUiLCJhIjoiY2l0MHA0M3czMG40ZjJwcGdzNnFmdXV3NyJ9.QbUsEvgQNh4pQwhF1A6XiQ
+    </string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
 
     <string name="welcome_plain">Hello there!</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
