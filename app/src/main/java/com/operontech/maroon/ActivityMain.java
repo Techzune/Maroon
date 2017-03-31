@@ -24,7 +24,7 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 
 	public final static String MAROONTAG = "Maroon";
 	private boolean backButtonExitTriggered = false;
-	FragmentManager fManager;
+	private FragmentManager fManager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
