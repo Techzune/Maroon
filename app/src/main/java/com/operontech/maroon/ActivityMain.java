@@ -1,6 +1,7 @@
 package com.operontech.maroon;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -14,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.operontech.maroon.frag.FragmentHome;
 import com.operontech.maroon.frag.FragmentMap;
@@ -65,6 +67,15 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 		DrawerLayout drawer = (DrawerLayout) findViewById(R.id.main_drawerLayout);
 		if (drawer.isDrawerOpen(GravityCompat.START)) {
 			drawer.closeDrawer(GravityCompat.START);
+		} else if (fManager.getBackStackEntryCount() == 0 && !backButtonExitTriggered) {
+			backButtonExitTriggered = true;
+			new Handler().postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					backButtonExitTriggered = false;
+				}
+			}, 2000);
+			Toast.makeText(this, getString(R.string.back_button_exit), Toast.LENGTH_SHORT).show();
 		} else {
 			super.onBackPressed();
 		}
