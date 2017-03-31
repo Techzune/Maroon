@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "852004944031",
+    "firebase_url": "https://maroon-f0c87.firebaseio.com",
+    "project_id": "maroon-f0c87",
+    "storage_bucket": "maroon-f0c87.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852004944031:android:646b6f3454dc043e",
+        "android_client_info": {
+          "package_name": "com.operontech.maroon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852004944031-r9sik3jmnj37qir0kq5hna37mvh5oshn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.operontech.maroon",
+            "certificate_hash": "92ffd2d21962b714772791af4ca447eed44a96fe"
+          }
+        },
+        {
+          "client_id": "852004944031-drghm2tl2t7qhev3v2kqkrjrlv4g5l5j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2_qq194_LdX9SQhTT9WTVCZChrloH4_8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852004944031-drghm2tl2t7qhev3v2kqkrjrlv4g5l5j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

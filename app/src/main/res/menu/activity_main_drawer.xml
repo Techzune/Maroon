@@ -8,7 +8,7 @@
                 android:title="@string/nav_text_home"/>
         <item
                 android:id="@+id/nav_map"
-                android:icon="@drawable/ic_menu_gallery"
+                android:icon="@drawable/ic_action_map"
                 android:title="@string/nav_text_map"/>
     </group>
 

@@ -3,9 +3,7 @@ package com.operontech.maroon;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
@@ -14,7 +12,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.operontech.maroon.frag.FragmentHome;
@@ -39,14 +36,6 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 		// Set up the toolbar
 		final Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
 		setSupportActionBar(toolbar);
-
-		final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.main_fab);
-		fab.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(final View view) {
-				Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-			}
-		});
 
 		// Set up the navigation drawer
 		final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.main_drawerLayout);
