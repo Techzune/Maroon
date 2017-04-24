@@ -1,4 +1,4 @@
-<img src="https://s3.amazonaws.com/symp.csm.usprod/msstate/files/6a9/6a9cf6a7c69551f22aacead42b1c8d97.png" alt="Maroon Logo" style="width:150px;"/>
+<img src="https://www.dropbox.com/s/cgmutgqfticwdux/web_hi_res_128.png?dl=1" alt="Maroon Logo" style="width:150px;"/>
 
 # Maroon for Android (formerly Dawg Trails)
 The student's interactive assistant for Mississippi State University
