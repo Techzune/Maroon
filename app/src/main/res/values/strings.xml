@@ -10,4 +10,7 @@
 
     <string name="welcome_plain">Hello there!</string>
     <string name="back_button_exit">Press BACK again to exit app</string>
+
+    <string name="all_set">You\'re all set!</string>
+    <string name="lets_begin">Let\'s Begin!</string>
 </resources>
