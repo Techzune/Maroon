@@ -4,9 +4,7 @@ import android.annotation.SuppressLint;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.Toast;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -32,6 +30,7 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
 		final View view = inflater.inflate(R.layout.fragment_map, container, false);
 
+		// Enable the location engine
 		locEngine = LocationSource.getLocationEngine(getContext());
 		locEngine.activate();
 
@@ -51,6 +50,9 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 				showDefaultMap(false);
 			}
 		});
+
+		// Enable the MyLocation button
+		setHasOptionsMenu(true);
 		return view;
 	}
 
@@ -110,6 +112,42 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 		}
 	}
 
+	@Override
+	public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
+		inflater.inflate(R.menu.menu_map, menu);
+	}
+
+	@Override
+	public void setHasOptionsMenu(final boolean hasMenu) {
+		super.setHasOptionsMenu(hasMenu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(final MenuItem item) {
+		if (item.getItemId() == R.id.action_mylocation) {
+			goToMyLocation(true);
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	/**
+	 * Moves the camera to the user's current location
+	 * @param animateCamera if true, the camera will be animated
+	 */
+	public void goToMyLocation(final boolean animateCamera) {
+		verifyGPSPermissions();
+		final Location lastLocation = locEngine.getLastLocation();
+		if (lastLocation != null) {
+			moveCamera(animateCamera, new LatLng(lastLocation), 17.5f);
+		}
+	}
+
+	/**
+	 * Moves the camera to a specified LatLng with zoom
+	 * @param animateCamera if true, the camera will be animated
+	 * @param latLng the desired center of the camera
+	 * @param zoom the desired zoom for the camera
+	 */
 	private void moveCamera(final boolean animateCamera, final LatLng latLng, final float zoom) {
 		if (animateCamera) {
 			mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
@@ -118,9 +156,12 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 		}
 	}
 
-	public void verifyGPS() {
-		// Check if location permissions are granted
-		// if not, request them
+	/**
+	 * Verifies if permissions for location are granted
+	 * If not granted, request the permissions
+	 * If granted, enable MyLocation
+	 */
+	public void verifyGPSPermissions() {
 		if (!PermissionsManager.areLocationPermissionsGranted(getContext())) {
 			permManager.requestLocationPermissions(getActivity());
 		} else {
@@ -129,33 +170,32 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 
 	}
 
+	/**
+	 * Shows the default map for the view
+	 * If location permissions are granted, the camera will go to the user's location
+	 * Otherwise, the camera will center on Mississippi State University
+	 * @param animateCamera if true, the camera will be animated
+	 */
 	public void showDefaultMap(final boolean animateCamera) {
 		// Verify that GPS permissions are granted
-		verifyGPS();
+		verifyGPSPermissions();
 
 		if (PermissionsManager.areLocationPermissionsGranted(getContext())) {
-			final Location lastLocation = locEngine.getLastLocation();
-			if (lastLocation != null) {
-				moveCamera(animateCamera, new LatLng(lastLocation), 17.5f);
-			}
+			goToMyLocation(animateCamera);
 		} else {
 			moveCamera(animateCamera, new LatLng(33.4537233, -88.7902384), 14f);
 		}
 	}
 
-	public void setMap() {
-
-	}
-
 	@Override
 	public void onExplanationNeeded(final List<String> list) {
-
+		Toast.makeText(getContext(), "This app needs location permissions to enable direction functionality", Toast.LENGTH_LONG).show();
 	}
 
 	@Override
 	public void onPermissionResult(final boolean granted) {
 		if (granted) {
-			verifyGPS();
+			verifyGPSPermissions();
 		} else {
 			Toast.makeText(getContext(), "Location permissions not granted", Toast.LENGTH_LONG).show();
 		}

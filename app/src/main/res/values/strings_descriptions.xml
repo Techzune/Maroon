@@ -3,4 +3,5 @@
     <string name="desc_backgroundImage">Background Image</string>
     <string name="desc_logoImage">Logo Image</string>
     <string name="desc_checkMarkImage">Check Mark Image</string>
+    <string name="desc_myLocation">My Location</string>
 </resources>
