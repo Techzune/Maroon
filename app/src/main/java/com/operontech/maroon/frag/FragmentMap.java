@@ -138,7 +138,7 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 		verifyGPSPermissions();
 		final Location lastLocation = locEngine.getLastLocation();
 		if (lastLocation != null) {
-			moveCamera(animateCamera, new LatLng(lastLocation), 17.5f);
+			moveCamera(animateCamera, new LatLng(lastLocation), 16f);
 		}
 	}
 
@@ -172,19 +172,15 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 
 	/**
 	 * Shows the default map for the view
-	 * If location permissions are granted, the camera will go to the user's location
-	 * Otherwise, the camera will center on Mississippi State University
+	 * Enabled GPS Permissions, then centers the camera on Mississippi State University's Drill Field
 	 * @param animateCamera if true, the camera will be animated
 	 */
 	public void showDefaultMap(final boolean animateCamera) {
 		// Verify that GPS permissions are granted
 		verifyGPSPermissions();
 
-		if (PermissionsManager.areLocationPermissionsGranted(getContext())) {
-			goToMyLocation(animateCamera);
-		} else {
-			moveCamera(animateCamera, new LatLng(33.4537233, -88.7902384), 14f);
-		}
+		// Center the camera on Mississippi State University's Drill Field
+		moveCamera(animateCamera, new LatLng(33.45405991916038, -88.78927499055862), 15.5f);
 	}
 
 	@Override
