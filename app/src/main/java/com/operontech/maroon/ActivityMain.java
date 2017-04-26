@@ -22,6 +22,7 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 	public final static String MAROONTAG = "Maroon";
 	private boolean backButtonExitTriggered = false;
 	private FragmentManager fManager;
+	private FragmentMap fragMap;
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
@@ -49,6 +50,15 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 
 		// Set up Mapbox
 		Mapbox.getInstance(this, getString(R.string.mapbox_access_token));
+
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				// Create the map fragment to hide it in the background
+				fragMap = new FragmentMap();
+				fManager.beginTransaction().add(R.id.main_fragment, fragMap).hide(fragMap).commit();
+			}
+		}).start();
 	}
 
 	@Override
@@ -71,8 +81,7 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 	}
 
 	@Override
-	public boolean onNavigationItemSelected(@NonNull
-	final MenuItem item) {
+	public boolean onNavigationItemSelected(@NonNull    final MenuItem item) {
 		final int id = item.getItemId();
 
 		switch (id) {
@@ -80,7 +89,7 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 			showFragment(new FragmentHome());
 			break;
 		case R.id.nav_map:
-			showFragment(new FragmentMap());
+			showMapFragment();
 			break;
 
 		case R.id.nav_preferences:
@@ -95,6 +104,11 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 	}
 
 	private void showFragment(final Fragment fragment) {
+		fManager.beginTransaction().setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out).hide(fragMap).commit();
 		fManager.beginTransaction().setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out).replace(R.id.main_fragment, fragment).commit();
+	}
+
+	private void showMapFragment() {
+		fManager.beginTransaction().setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out).replace(R.id.main_fragment, fragMap).show(fragMap).commit();
 	}
 }
