@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.*;
 import android.widget.Toast;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
+import com.mapbox.mapboxsdk.constants.MyLocationTracking;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.location.LocationSource;
 import com.mapbox.mapboxsdk.maps.MapView;
@@ -141,6 +142,7 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 		verifyGPSPermissions();
 		final Location lastLocation = locEngine.getLastLocation();
 		if (lastLocation != null) {
+			mMap.getTrackingSettings().setMyLocationTrackingMode(MyLocationTracking.TRACKING_FOLLOW);
 			moveCamera(animateCamera, new LatLng(lastLocation), 16f);
 		}
 	}
@@ -168,6 +170,7 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 		if (!PermissionsManager.areLocationPermissionsGranted(getContext())) {
 			permManager.requestLocationPermissions(getActivity());
 		} else {
+			locEngine.requestLocationUpdates();
 			mMap.setMyLocationEnabled(true);
 		}
 
