@@ -68,6 +68,9 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 	public void onResume() {
 		super.onResume();
 		if (mapView != null) {
+			if (!isHidden()) {
+				getActivity().setTitle(R.string.title_campusMap);
+			}
 			mapView.onResume();
 		}
 	}
@@ -201,7 +204,8 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 	public void onHiddenChanged(final boolean hidden) {
 		super.onHiddenChanged(hidden);
 		if (!hidden) {
-			showDefaultMap(false);
+			getActivity().setTitle(R.string.title_campusMap);
+			showDefaultMap(true);
 		}
 	}
 }

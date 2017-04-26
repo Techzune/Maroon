@@ -12,4 +12,10 @@ public class FragmentHome extends Fragment {
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.fragment_home, container, false);
 	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		getActivity().setTitle(R.string.title_home);
+	}
 }
