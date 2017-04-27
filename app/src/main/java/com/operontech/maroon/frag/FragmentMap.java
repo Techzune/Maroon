@@ -44,10 +44,8 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 			@Override
 			public void onMapReady(final MapboxMap mapboxMap) {
 				mMap = mapboxMap;
-
 				// Visual adjustments
 				mMap.getMyLocationViewSettings().setAccuracyAlpha(0);
-
 				showDefaultMap(false);
 			}
 		});
@@ -129,21 +127,19 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 	@Override
 	public boolean onOptionsItemSelected(final MenuItem item) {
 		if (item.getItemId() == R.id.action_mylocation) {
-			goToMyLocation(true);
+			enableLocationFollowing();
 		}
 		return super.onOptionsItemSelected(item);
 	}
 
 	/**
-	 * Moves the camera to the user's current location
-	 * @param animateCamera if true, the camera will be animated
+	 * Enables tracking by following the user's location
 	 */
-	public void goToMyLocation(final boolean animateCamera) {
+	public void enableLocationFollowing() {
 		verifyGPSPermissions();
 		final Location lastLocation = locEngine.getLastLocation();
 		if (lastLocation != null) {
 			mMap.getTrackingSettings().setMyLocationTrackingMode(MyLocationTracking.TRACKING_FOLLOW);
-			moveCamera(animateCamera, new LatLng(lastLocation), 16f);
 		}
 	}
 
