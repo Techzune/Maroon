@@ -1,4 +1,4 @@
-package com.operontech.maroon;
+package com.operontech.maroon.activity;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 import com.mapbox.mapboxsdk.Mapbox;
+import com.operontech.maroon.R;
 import com.operontech.maroon.frag.FragmentHome;
 import com.operontech.maroon.frag.FragmentMap;
 
