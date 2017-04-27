@@ -48,13 +48,13 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 		final NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 		navigationView.setNavigationItemSelectedListener(this);
 
+		// Set up Mapbox
+		Mapbox.getInstance(ActivityMain.this, getString(R.string.mapbox_access_token));
+
 		// Don't slow down the main thread for the map (which is in the background)
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
-				// Set up Mapbox
-				Mapbox.getInstance(ActivityMain.this, getString(R.string.mapbox_access_token));
-
 				// Create the map fragment to hide it in the background
 				fragMap = new FragmentMap();
 				fManager.beginTransaction().add(R.id.main_fragment, fragMap).hide(fragMap).commit();
