@@ -187,7 +187,8 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 
 	@Override
 	public void onExplanationNeeded(final List<String> list) {
-		Toast.makeText(getContext(), "This app needs location permissions to enable direction functionality", Toast.LENGTH_LONG).show();
+		Toast.makeText(getContext(), "This app needs location permissions to enable direction functionality", Toast.LENGTH_LONG)
+		     .show();
 	}
 
 	@Override
