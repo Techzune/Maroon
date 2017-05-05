@@ -44,6 +44,7 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 			@Override
 			public void onMapReady(final MapboxMap mapboxMap) {
 				mMap = mapboxMap;
+
 				// Visual adjustments
 				mMap.getMyLocationViewSettings().setAccuracyAlpha(0);
 				showDefaultMap(false);

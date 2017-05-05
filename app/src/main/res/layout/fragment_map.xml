@@ -3,7 +3,7 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              tools:context="com.operontech.maroon.frag.FragmentMap">
-    
+
     <com.mapbox.mapboxsdk.maps.MapView
             android:id="@+id/map_mapview"
             android:layout_width="match_parent"
