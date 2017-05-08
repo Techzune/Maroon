@@ -4,8 +4,8 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <GridView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:numColumns="2"/>
+    <GridView android:id="@+id/places_categories_gridview"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:numColumns="2"/>
 </LinearLayout>
