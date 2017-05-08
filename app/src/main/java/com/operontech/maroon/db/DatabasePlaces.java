@@ -8,7 +8,7 @@ public class DatabasePlaces {
 	private static DatabasePlaces databaseInstance;
 	private final FirebaseDatabase firebase;
 
-	private ArrayList<Place> placeList;
+	private ArrayList<PlaceListing> placeListingList;
 
 	public static synchronized DatabasePlaces getInstance() {
 		if (databaseInstance == null) {
@@ -36,10 +36,10 @@ public class DatabasePlaces {
 		});
 	}
 
-	public ArrayList<Place> getListOfPlaces() {
-		if (placeList == null) {
+	public ArrayList<PlaceListing> getListOfPlaces() {
+		if (placeListingList == null) {
 			pullData();
 		}
-		return placeList;
+		return placeListingList;
 	}
 }

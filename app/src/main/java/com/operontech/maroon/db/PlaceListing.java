@@ -1,6 +1,6 @@
 package com.operontech.maroon.db;
 
-public class Place {
+public class PlaceListing {
 	private String id;
 	private String title;
 	private String description;
