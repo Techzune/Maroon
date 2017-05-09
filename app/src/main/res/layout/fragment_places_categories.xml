@@ -7,5 +7,9 @@
     <GridView android:id="@+id/places_categories_gridview"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:numColumns="2"/>
+              android:padding="12dp"
+              android:numColumns="2"
+              android:verticalSpacing="12dp"
+              android:horizontalSpacing="12dp"
+              android:scrollbarStyle="outsideInset"/>
 </LinearLayout>
