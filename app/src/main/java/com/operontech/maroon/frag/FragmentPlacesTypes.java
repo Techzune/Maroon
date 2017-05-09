@@ -10,7 +10,7 @@ import android.widget.GridView;
 import com.operontech.maroon.R;
 import com.operontech.maroon.adapter.GridViewAdapterPlacesType;
 
-public class FragmentPlacesCategories extends Fragment {
+public class FragmentPlacesTypes extends Fragment {
 
 	GridView gridView;
 

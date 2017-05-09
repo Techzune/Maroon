@@ -17,7 +17,7 @@ import com.mapbox.mapboxsdk.Mapbox;
 import com.operontech.maroon.R;
 import com.operontech.maroon.frag.FragmentHome;
 import com.operontech.maroon.frag.FragmentMap;
-import com.operontech.maroon.frag.FragmentPlacesCategories;
+import com.operontech.maroon.frag.FragmentPlacesTypes;
 
 public class ActivityMain extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -95,7 +95,7 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 			showMapFragment();
 			break;
 		case R.id.nav_places:
-			showFragment(new FragmentPlacesCategories());
+			showFragment(new FragmentPlacesTypes());
 			break;
 
 		case R.id.nav_preferences:
