@@ -9,13 +9,12 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.operontech.maroon.R;
+import com.operontech.maroon.db.PlaceType;
 
 public class AdapterGridViewPlacesCateg extends BaseAdapter {
 
 	private final Context mContext;
-
-	private final String[] CATEG_STRINGS = { "Resident Hall", "Food & Dining", "Academic", "Athletic", "Support", "Other" };
-	private final int[] CATEG_DRAWABLES = { R.drawable.ic_action_home, R.drawable.ic_dining, R.drawable.ic_academic, R.drawable.ic_athletic, R.drawable.ic_help_outline, R.drawable.ic_other };
+	private final PlaceType[] placeTypes = PlaceType.values();
 
 	public AdapterGridViewPlacesCateg(final Context context) {
 		mContext = context;
@@ -32,8 +31,10 @@ public class AdapterGridViewPlacesCateg extends BaseAdapter {
 
 			final ImageView imageView = (ImageView) gridView.findViewById(R.id.item_gridview_placetype_image);
 			final TextView textView = (TextView) gridView.findViewById(R.id.item_gridview_placetype_text);
-			imageView.setImageResource(CATEG_DRAWABLES[i]);
-			textView.setText(CATEG_STRINGS[i]);
+
+			final PlaceType curPlace = placeTypes[i];
+			imageView.setImageResource(curPlace.getIconResource());
+			textView.setText(curPlace.getTitle());
 		} else {
 			gridView = convertView;
 		}
@@ -42,16 +43,16 @@ public class AdapterGridViewPlacesCateg extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		return CATEG_STRINGS.length;
+		return placeTypes.length;
 	}
 
 	@Override
 	public Object getItem(final int i) {
-		return CATEG_STRINGS[i];
+		return placeTypes[i];
 	}
 
 	@Override
 	public long getItemId(final int i) {
-		return CATEG_DRAWABLES[i];
+		return 0;
 	}
 }
