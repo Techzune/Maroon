@@ -2,6 +2,7 @@
 <resources>
     <string name="nav_text_home">Home</string>
     <string name="nav_text_map">Campus Map</string>
+    <string name="nav_text_places">Places</string>
 
     <string name="nav_text_more">More</string>
 

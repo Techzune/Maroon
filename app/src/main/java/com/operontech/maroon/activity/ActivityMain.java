@@ -17,6 +17,7 @@ import com.mapbox.mapboxsdk.Mapbox;
 import com.operontech.maroon.R;
 import com.operontech.maroon.frag.FragmentHome;
 import com.operontech.maroon.frag.FragmentMap;
+import com.operontech.maroon.frag.FragmentPlacesCategories;
 
 public class ActivityMain extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -87,17 +88,20 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 		final int id = item.getItemId();
 
 		switch (id) {
-			case R.id.nav_home:
-				showFragment(new FragmentHome());
-				break;
-			case R.id.nav_map:
-				showMapFragment();
-				break;
+		case R.id.nav_home:
+			showFragment(new FragmentHome());
+			break;
+		case R.id.nav_map:
+			showMapFragment();
+			break;
+		case R.id.nav_places:
+			showFragment(new FragmentPlacesCategories());
+			break;
 
-			case R.id.nav_preferences:
-				break;
-			case R.id.nav_about:
-				break;
+		case R.id.nav_preferences:
+			break;
+		case R.id.nav_about:
+			break;
 		}
 
 		final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.main_drawerLayout);
@@ -106,21 +110,11 @@ public class ActivityMain extends AppCompatActivity implements NavigationView.On
 	}
 
 	private void showFragment(final Fragment fragment) {
-		fManager.beginTransaction()
-		        .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-		        .hide(fragMap)
-		        .commit();
-		fManager.beginTransaction()
-		        .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-		        .replace(R.id.main_fragment, fragment)
-		        .commit();
+		fManager.beginTransaction().setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out).hide(fragMap).commit();
+		fManager.beginTransaction().setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out).replace(R.id.main_fragment, fragment).commit();
 	}
 
 	private void showMapFragment() {
-		fManager.beginTransaction()
-		        .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-		        .replace(R.id.main_fragment, fragMap)
-		        .show(fragMap)
-		        .commit();
+		fManager.beginTransaction().setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out).replace(R.id.main_fragment, fragMap).show(fragMap).commit();
 	}
 }
