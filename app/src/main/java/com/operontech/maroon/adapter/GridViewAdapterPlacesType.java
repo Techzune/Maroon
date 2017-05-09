@@ -11,12 +11,12 @@ import android.widget.TextView;
 import com.operontech.maroon.R;
 import com.operontech.maroon.db.PlaceType;
 
-public class AdapterGridViewPlacesCateg extends BaseAdapter {
+public class GridViewAdapterPlacesType extends BaseAdapter {
 
 	private final Context mContext;
 	private final PlaceType[] placeTypes = PlaceType.values();
 
-	public AdapterGridViewPlacesCateg(final Context context) {
+	public GridViewAdapterPlacesType(final Context context) {
 		mContext = context;
 	}
 
@@ -27,7 +27,7 @@ public class AdapterGridViewPlacesCateg extends BaseAdapter {
 		final View gridView;
 
 		if (convertView == null) {
-			gridView = inflater.inflate(R.layout.item_gridview_placestype, null);
+			gridView = inflater.inflate(R.layout.item_gridview_placestypes, null);
 
 			final ImageView imageView = (ImageView) gridView.findViewById(R.id.item_gridview_placetype_image);
 			final TextView textView = (TextView) gridView.findViewById(R.id.item_gridview_placetype_text);

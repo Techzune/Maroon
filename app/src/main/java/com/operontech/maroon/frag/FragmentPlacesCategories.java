@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import com.operontech.maroon.R;
-import com.operontech.maroon.adapter.AdapterGridViewPlacesCateg;
+import com.operontech.maroon.adapter.GridViewAdapterPlacesType;
 
 public class FragmentPlacesCategories extends Fragment {
 
@@ -17,10 +17,10 @@ public class FragmentPlacesCategories extends Fragment {
 	@Nullable
 	@Override
 	public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, final Bundle savedInstanceState) {
-		final View view = inflater.inflate(R.layout.fragment_places_categories, container, false);
-		gridView = (GridView) view.findViewById(R.id.places_categories_gridview);
+		final View view = inflater.inflate(R.layout.fragment_places_types, container, false);
+		gridView = (GridView) view.findViewById(R.id.places_types_gridview);
 
-		final AdapterGridViewPlacesCateg gridViewAdapter = new AdapterGridViewPlacesCateg(getActivity());
+		final GridViewAdapterPlacesType gridViewAdapter = new GridViewAdapterPlacesType(getActivity());
 		gridView.setAdapter(gridViewAdapter);
 
 		return view;
