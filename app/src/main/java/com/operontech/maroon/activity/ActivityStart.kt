@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import butterknife.BindView
+import butterknife.ButterKnife
 import com.operontech.maroon.R
 
 class ActivityStart : AppCompatActivity() {
@@ -18,6 +19,7 @@ class ActivityStart : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
+        ButterKnife.bind(this)
 
         buttonNonStudent.setOnClickListener {
             val intent = Intent(this@ActivityStart, ActivityStartLast::class.java)

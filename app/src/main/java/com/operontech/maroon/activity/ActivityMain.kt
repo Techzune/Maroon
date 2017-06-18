@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.widget.Toast
 import butterknife.BindView
+import butterknife.ButterKnife
 import com.mapbox.mapboxsdk.Mapbox
 import com.operontech.maroon.R
 import com.operontech.maroon.frag.FragmentHome
@@ -32,6 +33,7 @@ class ActivityMain : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportFragmentManager.beginTransaction().add(R.id.main_fragment, FragmentHome()).commit()
 
         setContentView(R.layout.activity_main)
+        ButterKnife.bind(this)
 
         // Set up the toolbar
         val toolbar = findViewById(R.id.main_toolbar) as Toolbar

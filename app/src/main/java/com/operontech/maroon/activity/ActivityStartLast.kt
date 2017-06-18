@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import butterknife.BindView
+import butterknife.ButterKnife
 import com.operontech.maroon.R
 
 class ActivityStartLast : AppCompatActivity() {
@@ -15,6 +16,7 @@ class ActivityStartLast : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start_last)
+        ButterKnife.bind(this)
 
         // finishButton will open ActivityMain
         finishButton.setOnClickListener {
