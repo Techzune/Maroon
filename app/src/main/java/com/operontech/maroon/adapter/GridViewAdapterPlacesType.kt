@@ -26,7 +26,7 @@ class GridViewAdapterPlacesType(private val mContext: Context) : BaseAdapter() {
             val textView = gridView.findViewById(R.id.item_gridview_placetype_text) as TextView
 
             val curPlace = placeTypes[position]
-            imageView.setImageResource(curPlace.iconResource)
+            imageView.setImageResource(curPlace.icon)
             textView.text = curPlace.title
         } else {
             gridView = convertView
