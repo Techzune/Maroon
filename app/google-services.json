@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "852004944031-r9sik3jmnj37qir0kq5hna37mvh5oshn.apps.googleusercontent.com",
+          "client_id": "852004944031-ob3albro7vru1shp0eop28pko3573k9p.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.operontech.maroon",
-            "certificate_hash": "92ffd2d21962b714772791af4ca447eed44a96fe"
+            "certificate_hash": "5c05fad28ab3657712de7d8a53bced7514154625"
           }
         },
         {
@@ -29,7 +29,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD2_qq194_LdX9SQhTT9WTVCZChrloH4_8"
+          "current_key": "AIzaSyAqluw7wTfg6nSWSNHS59wU1O8_ZBBOWp4"
         }
       ],
       "services": {
