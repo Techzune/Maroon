@@ -18,7 +18,7 @@ class FragmentPlacesTypes : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_places_types, container, false)
-        ButterKnife.bind(view)
+        ButterKnife.bind(this, view)
         gridView.adapter = GridViewAdapterPlacesType(activity)
         return view
     }
