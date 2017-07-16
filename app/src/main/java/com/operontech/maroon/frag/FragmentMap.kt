@@ -80,34 +80,26 @@ class FragmentMap : Fragment(), PermissionsListener {
 
     override fun onPause() {
         super.onPause()
-        if (mapView != null) {
-            mapView!!.onPause()
-        }
+        mapView?.onPause()
     }
 
     override fun onStop() {
         super.onStop()
-        if (mapView != null) {
-            mapView!!.onStop()
-        }
+        mapView?.onStop()
     }
 
     override fun onLowMemory() {
         super.onLowMemory()
-        if (mapView != null) {
-            mapView!!.onLowMemory()
-        }
+        mapView?.onLowMemory()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        if (mapView != null) {
-            mapView!!.onDestroy()
-        }
+        mapView?.onDestroy()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        inflater!!.inflate(R.menu.menu_map, menu)
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_map, menu)
     }
 
     override fun setHasOptionsMenu(hasMenu: Boolean) {
@@ -175,8 +167,7 @@ class FragmentMap : Fragment(), PermissionsListener {
     }
 
     override fun onExplanationNeeded(list: List<String>) {
-        Toast.makeText(context, "This app needs location permissions to enable mapping functionality", Toast.LENGTH_LONG)
-                .show()
+        Toast.makeText(context, "This app needs location permissions to enable mapping functionality", Toast.LENGTH_LONG).show()
     }
 
     override fun onPermissionResult(granted: Boolean) {
