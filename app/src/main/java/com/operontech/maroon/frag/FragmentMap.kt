@@ -25,6 +25,7 @@ class FragmentMap : Fragment(), PermissionsListener {
     lateinit var mMap: MapboxMap
 
     @BindView(R.id.map_mapview)
+    @JvmField
     var mapView: MapView? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {

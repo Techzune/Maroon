@@ -36,7 +36,7 @@ class ActivityMain : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         ButterKnife.bind(this)
 
         // Set up the toolbar
-        val toolbar = findViewById(R.id.main_toolbar) as Toolbar
+        val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
         setSupportActionBar(toolbar)
 
         // Set up the navigation drawer
@@ -45,7 +45,7 @@ class ActivityMain : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         // Set up navigation view listener
-        val navigationView = findViewById(R.id.nav_view) as NavigationView
+        val navigationView = findViewById<NavigationView>(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
 
         // Set up Mapbox

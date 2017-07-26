@@ -22,8 +22,8 @@ class GridViewAdapterPlacesType(private val mContext: Context) : BaseAdapter() {
         if (convertView == null) {
             gridView = inflater.inflate(R.layout.item_gridview_placestypes, null)
 
-            val imageView = gridView.findViewById(R.id.item_gridview_placetype_image) as ImageView
-            val textView = gridView.findViewById(R.id.item_gridview_placetype_text) as TextView
+            val imageView = gridView.findViewById<ImageView>(R.id.item_gridview_placetype_image)
+            val textView = gridView.findViewById<TextView>(R.id.item_gridview_placetype_text)
 
             val curPlace = placeTypes[position]
             imageView.setImageResource(curPlace.icon)
