@@ -19,7 +19,8 @@
     <string name="what_is_major">What is your major?</string>
     <string name="what_is_netID">What is your netID?</string>
 
-    <string name="good_morning">Good Morning!</string>
-    <string name="good_afternoon">Good Afternoon!</string>
-    <string name="good_evening">Good Evening!</string>
+    <string name="good_morning">Good morning!</string>
+    <string name="good_afternoon">Good afternoon!</string>
+    <string name="good_evening">Good evening!</string>
+    <string name="hello_there">Hello there!</string>
 </resources>
