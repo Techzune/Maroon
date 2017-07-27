@@ -35,7 +35,7 @@ class FragmentMap : Fragment(), PermissionsListener {
         ButterKnife.bind(this, view)
 
         // Enable the location engine
-        locEngine = LocationSource.getLocationEngine(context)
+        locEngine = LocationSource(context)
         locEngine.activate()
 
         permManager = PermissionsManager(this)
