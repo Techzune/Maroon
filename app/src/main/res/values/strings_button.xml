@@ -2,4 +2,7 @@
 <resources>
     <string name="btn_start_student">I am a student</string>
     <string name="btn_start_nonstudent">I am not a student</string>
+
+    <string name="btn_done">Done</string>
+    <string name="btn_next">Next</string>
 </resources>

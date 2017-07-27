@@ -13,4 +13,9 @@
 
     <string name="all_set">You\'re all set!</string>
     <string name="lets_begin">Let\'s Begin!</string>
+
+    <string name="first_things_first">First things first…</string>
+    <string name="what_is_name">What is your name?</string>
+    <string name="what_is_major">What is your major?</string>
+    <string name="what_is_netID">What is your netID?</string>
 </resources>

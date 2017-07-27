@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorStartBackground"
+        tools:context="com.operontech.maroon.activity.ActivityStartStudentInfo">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:paddingBottom="64dp">
+
+        <TextView
+                android:id="@+id/startStudentInfo_text_major"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="32dp"
+                android:gravity="center"
+                android:text="@string/first_things_first"
+                android:textStyle="bold"
+                android:fontFamily="cursive"
+                android:textColor="@color/colorWhite"
+                android:textSize="48dp"
+                tools:ignore="SpUsage"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                
+        />
+
+        <Button
+                android:id="@+id/startStudentInfo_button_next"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="42dp"
+                android:layout_marginEnd="42dp"
+                android:text="@string/btn_next"
+                android:fontFamily="casual"
+                android:textSize="20dp"
+                android:textAllCaps="false"
+                android:background="@drawable/background_button_selector"/>
+
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
