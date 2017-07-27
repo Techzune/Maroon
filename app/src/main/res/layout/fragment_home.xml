@@ -28,7 +28,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:gravity="center"
-                    android:text="Good Morning!"
+                    android:text="@string/good_morning"
                     android:fontFamily="cursive"
                     android:textSize="48dp"
                     android:textStyle="bold"
