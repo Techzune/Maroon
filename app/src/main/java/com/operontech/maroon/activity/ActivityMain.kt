@@ -16,7 +16,6 @@ import butterknife.ButterKnife
 import com.mapbox.mapboxsdk.Mapbox
 import com.operontech.maroon.R
 import com.operontech.maroon.frag.FragmentHome
-import com.operontech.maroon.frag.FragmentMap
 import com.operontech.maroon.frag.FragmentPlacesTypes
 
 class ActivityMain : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -107,6 +106,6 @@ class ActivityMain : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     companion object {
-        val MAROON_TAG = "Maroon"
+        public val MAROON_TAG = "Maroon"
     }
 }
