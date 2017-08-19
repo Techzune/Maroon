@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import butterknife.BindView
 import butterknife.ButterKnife
+import com.google.firebase.database.FirebaseDatabase
 import com.operontech.maroon.R
 import com.operontech.maroon.adapter.GridViewAdapterPlacesList
 import com.operontech.maroon.db.PlaceListing
@@ -26,10 +27,11 @@ class FragmentPlacesList : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        activity.title = getString(R.string.title_placesList, arguments.getString("type"))
+        activity.title = getString(R.string.title_placesList, arguments.getString("typeName"))
     }
 
     private fun getList(): Array<PlaceListing> {
+        var dataRef = FirebaseDatabase.getInstance().getReference("")
         return Array(10, { PlaceListing("0", "test", "test") })
     }
 }

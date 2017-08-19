@@ -25,7 +25,8 @@ class FragmentPlacesTypes : Fragment() {
         gridView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             val item = gridView.getItemAtPosition(position) as PlaceType
             val bundle = Bundle()
-            bundle.putString("type", item.title)
+            bundle.putString("typeID", item.toString().toLowerCase())
+            bundle.putString("typeName", item.title)
 
             val listFragment = FragmentPlacesList()
             listFragment.arguments = bundle
