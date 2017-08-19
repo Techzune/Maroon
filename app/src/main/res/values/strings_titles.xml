@@ -2,4 +2,5 @@
 <resources>
     <string name="title_home">Home</string>
     <string name="title_campusMap">Campus Map</string>
+    <string name="title_placesList">%1$s Places</string>
 </resources>
