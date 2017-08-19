@@ -22,7 +22,7 @@ class FragmentPlacesTypes : Fragment() {
         val view = inflater!!.inflate(R.layout.fragment_places_types, container, false)
         ButterKnife.bind(this, view)
         gridView.adapter = GridViewAdapterPlacesType(activity)
-        gridView.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+        gridView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             val item = gridView.getItemAtPosition(position) as PlaceType
             val bundle = Bundle()
             bundle.putString("type", item.title)
