@@ -15,7 +15,7 @@ import com.operontech.maroon.db.PlaceListing
 class FragmentPlacesList : Fragment() {
 
     @BindView(R.id.places_list_recyclerview)
-    lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_places_list, container, false)
