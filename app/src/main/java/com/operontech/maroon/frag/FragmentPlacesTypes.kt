@@ -10,7 +10,6 @@ import android.widget.GridView
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.operontech.maroon.R
-import com.operontech.maroon.activity.ActivityMain
 import com.operontech.maroon.adapter.GridViewAdapterPlacesType
 import com.operontech.maroon.db.PlaceType
 
@@ -30,7 +29,11 @@ class FragmentPlacesTypes : Fragment() {
 
             val listFragment = FragmentPlacesList()
             listFragment.arguments = bundle
-            (activity as ActivityMain).showFragment(listFragment)
+            activity.supportFragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left, R.anim.slide_out_right)
+                    .replace(R.id.main_fragment, listFragment)
+                    .addToBackStack(null)
+                    .commit()
         }
         return view
     }
