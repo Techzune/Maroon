@@ -19,12 +19,14 @@ class GridViewAdapterPlacesList(private val placeListings: MutableList<PlaceList
         return placeListings.size
     }
 
-    override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-        val listingName = placeListings[position].title
-        holder!!.placeName.text = listingName
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val listing = placeListings[position]
+        holder.placeName.text = listing.title
+        holder.placeDescription.text = listing.description
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val placeName: TextView = view.findViewById(R.id.placelisting_text_title)
+        val placeDescription: TextView = view.findViewById(R.id.placelisting_text_description)
     }
 }
