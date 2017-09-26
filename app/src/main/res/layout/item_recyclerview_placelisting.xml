@@ -8,6 +8,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
             card_view:contentPadding="12dp"
             card_view:cardUseCompatPadding="true"
             card_view:cardCornerRadius="4dp">
@@ -20,6 +22,7 @@
                     android:id="@+id/placelisting_text_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                     android:textAlignment="center"/>
 
         </RelativeLayout>
