@@ -41,6 +41,6 @@ class FragmentPlacesTypes : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        activity.title = "Places - Categories"
+        activity.title = "Places"
     }
 }
