@@ -8,6 +8,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            card_view:contentPadding="12dp"
+            card_view:cardUseCompatPadding="true"
             card_view:cardCornerRadius="4dp">
 
         <RelativeLayout
@@ -17,7 +19,8 @@
             <TextView
                     android:id="@+id/placelisting_text_title"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"/>
 
         </RelativeLayout>
 
