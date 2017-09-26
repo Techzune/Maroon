@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.google.firebase.database.DataSnapshot
@@ -20,8 +21,11 @@ import com.operontech.maroon.db.PlaceListing
 
 class FragmentPlacesList : Fragment() {
 
-    @BindView(R.id.places_list_recyclerview)
+    @BindView(R.id.places_list_recyclerView)
     lateinit var recyclerView: RecyclerView
+
+    @BindView(R.id.places_list_progressLayout)
+    lateinit var progressLayout: RelativeLayout
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_places_list, container, false)
@@ -41,6 +45,7 @@ class FragmentPlacesList : Fragment() {
         val dataRef = FirebaseDatabase.getInstance().reference.child("data").child(arguments.getString("typeID"))
         dataRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                progressLayout.visibility = View.VISIBLE
                 val listings: MutableList<PlaceListing> = ArrayList()
 
                 for (child in dataSnapshot.children) {
@@ -52,10 +57,12 @@ class FragmentPlacesList : Fragment() {
                 }
 
                 recyclerView.adapter = GridViewAdapterPlacesList(listings)
+                progressLayout.visibility = View.GONE
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
                 println("The read failed: " + databaseError.code)
+                progressLayout.visibility = View.GONE
             }
         })
     }
