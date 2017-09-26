@@ -1,3 +1,5 @@
 package com.operontech.maroon.db
 
-data class PlaceListing(val id: String, val title: String, val description: String)
+data class PlaceListing(var id: String, var title: String, var description: String) {
+    constructor() : this("", "", "")
+}

@@ -9,7 +9,7 @@ import com.operontech.maroon.R
 import com.operontech.maroon.db.PlaceListing
 
 
-class GridViewAdapterPlacesList(private val placeListings: Array<PlaceListing>) : RecyclerView.Adapter<GridViewAdapterPlacesList.ViewHolder>() {
+class GridViewAdapterPlacesList(private val placeListings: MutableList<PlaceListing>) : RecyclerView.Adapter<GridViewAdapterPlacesList.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent!!.context).inflate(R.layout.item_recyclerview_placelisting, parent, false)
         return ViewHolder(view)
