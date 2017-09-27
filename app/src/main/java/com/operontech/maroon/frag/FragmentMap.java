@@ -81,30 +81,30 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 				// Define the offline region
 				final OfflineTilePyramidRegionDefinition definition = new OfflineTilePyramidRegionDefinition(mapboxMap.getStyleUrl(), latLngBounds, 10, 20, getActivity().getResources().getDisplayMetrics().density);
 
-				// Set the metadata
-				byte[] metadata = null;
+				// Complete the setup for the offline region
+				final byte[] metadata;
 				try {
+					// Set the metadata
 					final JSONObject jsonObject = new JSONObject();
 					jsonObject.put("FIELD_REGION_NAME", "Mississippi State University");
 					final String json = jsonObject.toString();
 					metadata = json.getBytes(Charsets.UTF_8);
+
+					// Create the region asynchronously
+					offlineManager.createOfflineRegion(definition, metadata, new OfflineManager.CreateOfflineRegionCallback() {
+						@Override
+						public void onCreate(final OfflineRegion offlineRegion) {
+							offlineRegion.setDownloadState(OfflineRegion.STATE_ACTIVE);
+						}
+
+						@Override
+						public void onError(final String error) {
+							Log.e(TAG, "Error: " + error);
+						}
+					});
 				} catch (final Exception exception) {
 					Log.e(TAG, "Failed to encode metadata: " + exception.getMessage());
 				}
-
-				// Create the region asynchronously
-				//noinspection ConstantConditions
-				offlineManager.createOfflineRegion(definition, metadata, new OfflineManager.CreateOfflineRegionCallback() {
-					@Override
-					public void onCreate(final OfflineRegion offlineRegion) {
-						offlineRegion.setDownloadState(OfflineRegion.STATE_ACTIVE);
-					}
-
-					@Override
-					public void onError(final String error) {
-						Log.e(TAG, "Error: " + error);
-					}
-				});
 			}
 		});
 
