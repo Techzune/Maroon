@@ -26,6 +26,7 @@ import com.mapbox.services.android.telemetry.location.LocationEngine;
 import com.mapbox.services.android.telemetry.permissions.PermissionsListener;
 import com.mapbox.services.android.telemetry.permissions.PermissionsManager;
 import com.operontech.maroon.R;
+import com.operontech.maroon.db.PlaceListing;
 import kotlin.text.Charsets;
 import org.json.JSONObject;
 
@@ -49,6 +50,7 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 	TextView bottomSheetSubtitle;
 
 	private static final String TAG = "Maroon";
+	private PlaceListing currentListing = null;
 
 	@Override
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
@@ -56,6 +58,12 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 
 		// Bind the views
 		ButterKnife.bind(this, view);
+
+		// Get the passed arguments for the current listing
+		final Bundle args = getArguments();
+		if (args != null && args.containsKey("target")) {
+			currentListing = (PlaceListing) getArguments().getSerializable("target");
+		}
 
 		// Enable the location engine
 		locEngine = new LocationSource(getContext());
@@ -115,7 +123,13 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 
 				// Visual adjustments
 				mMap.getMyLocationViewSettings().setAccuracyAlpha(0);
-				showDefaultMap(false);
+
+				// If a target has been determined, go to it
+				if (currentListing != null) {
+					showPlaceOnMap(true);
+				} else {
+					showDefaultMap(true);
+				}
 			}
 		});
 
@@ -252,6 +266,10 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 
 		// Center the camera on Mississippi State University's Drill Field
 		moveCamera(animateCamera, new LatLng(33.45405991916038, -88.78927499055862), 15.5f);
+	}
+
+	public void showPlaceOnMap(final boolean animateCamera) {
+		moveCamera(animateCamera, currentListing.getLatLng(), 17f);
 	}
 
 	@Override

@@ -32,6 +32,7 @@ class FragmentPlacesList : Fragment() {
         ButterKnife.bind(this, view)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.setHasFixedSize(true)
+        //recyclerView.setOnClickListener(AdapterView.OnClickListener())
         setupAdapter()
         return view
     }
