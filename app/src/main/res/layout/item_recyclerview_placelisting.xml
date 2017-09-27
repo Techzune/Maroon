@@ -23,6 +23,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:textSize="18sp"
                     android:textAlignment="center"/>
 
             <TextView
@@ -30,6 +31,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/placelisting_text_title"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                     android:textAlignment="center"/>
 
         </RelativeLayout>
