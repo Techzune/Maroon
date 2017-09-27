@@ -50,13 +50,6 @@ class ActivityMain : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         // Set up Mapbox
         Mapbox.getInstance(this@ActivityMain, getString(R.string.mapbox_access_token))
-
-        // Don't slow down the main thread for the map (which is in the background)
-        Thread(Runnable {
-            // Create the map fragment to hide it in the background
-            fragMap = FragmentMap()
-            supportFragmentManager.beginTransaction().add(R.id.main_fragment, fragMap).hide(fragMap).commit()
-        }).start()
     }
 
     override fun onBackPressed() {
@@ -75,7 +68,7 @@ class ActivityMain : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Show the correct fragment based on item selected
         when (item.itemId) {
             R.id.nav_home -> showFragment(FragmentHome())
-            R.id.nav_map -> showMapFragment()
+            R.id.nav_map -> showFragment(FragmentMap())
             R.id.nav_places -> showFragment(FragmentPlacesTypes())
             R.id.nav_preferences -> TODO("Implement nav_preferences")
             R.id.nav_about -> TODO("Implement nav_about")
@@ -89,21 +82,9 @@ class ActivityMain : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportFragmentManager.run {
             beginTransaction()
                     .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-                    .hide(fragMap)
-                    .commit()
-            beginTransaction()
-                    .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
                     .replace(R.id.main_fragment, fragment)
                     .commit()
         }
-    }
-
-    fun showMapFragment() {
-        supportFragmentManager.beginTransaction()
-                .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-                .replace(R.id.main_fragment, fragMap)
-                .show(fragMap)
-                .commit()
     }
 
     companion object {
