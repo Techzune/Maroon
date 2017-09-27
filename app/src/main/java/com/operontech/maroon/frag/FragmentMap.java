@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.*;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.BindView;
@@ -40,7 +40,7 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 	MapboxMap mMap;
 
 	@BindView(R.id.map_bottomsheet_layout)
-	RelativeLayout bottomSheetLayout;
+	LinearLayout bottomSheetLayout;
 
 	@BindView(R.id.map_bottomsheet_title)
 	TextView bottomSheetTitle;
