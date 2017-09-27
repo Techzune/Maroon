@@ -21,7 +21,6 @@ import com.operontech.maroon.frag.FragmentPlacesTypes
 
 class ActivityMain : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private var backButtonExitTriggered = false
-    lateinit private var fragMap: FragmentMap
 
     @BindView(R.id.main_drawerLayout)
     lateinit var drawerLayout: DrawerLayout
