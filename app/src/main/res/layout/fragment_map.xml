@@ -10,7 +10,7 @@
             android:layout_height="match_parent"/>
 
     <LinearLayout
-            android:id="@+id/map_bottom_sheet"
+            android:id="@+id/map_bottomsheet_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="false"
@@ -20,13 +20,27 @@
             app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
 
         <android.support.v4.widget.NestedScrollView
-                android:id="@+id/bottom_sheet_content_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
             <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:padding="16dp">
+
+                <TextView
+                        android:id="@+id/map_bottomsheet_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+
+                <TextView
+                        android:id="@+id/map_bottomsheet_subtitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/map_bottomsheet_title"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
             </RelativeLayout>
 
         </android.support.v4.widget.NestedScrollView>

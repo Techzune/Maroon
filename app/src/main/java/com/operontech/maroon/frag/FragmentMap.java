@@ -6,7 +6,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.*;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.constants.MyLocationTracking;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -35,11 +39,23 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 	MapView mapView;
 	MapboxMap mMap;
 
+	@BindView(R.id.map_bottomsheet_layout)
+	RelativeLayout bottomSheetLayout;
+
+	@BindView(R.id.map_bottomsheet_title)
+	TextView bottomSheetTitle;
+
+	@BindView(R.id.map_bottomsheet_subtitle)
+	TextView bottomSheetSubtitle;
+
 	private static final String TAG = "Maroon";
 
 	@Override
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
 		final View view = inflater.inflate(R.layout.fragment_map, container, false);
+
+		// Bind the views
+		ButterKnife.bind(this, view);
 
 		// Enable the location engine
 		locEngine = new LocationSource(getContext());
@@ -59,13 +75,11 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 
 				// Create a bounding box for the offline region
 				final LatLngBounds latLngBounds = new LatLngBounds.Builder().include(new LatLng(33.468301, -88.775908)) // NE
-				                                                            .include(new LatLng(33.447141, -88.805906)) // SW
-				                                                            .build();
+						.include(new LatLng(33.447141, -88.805906)) // SW
+						.build();
 
 				// Define the offline region
-				final OfflineTilePyramidRegionDefinition definition = new OfflineTilePyramidRegionDefinition(mapboxMap.getStyleUrl(), latLngBounds, 10, 20, getActivity()
-						.getResources()
-						.getDisplayMetrics().density);
+				final OfflineTilePyramidRegionDefinition definition = new OfflineTilePyramidRegionDefinition(mapboxMap.getStyleUrl(), latLngBounds, 10, 20, getActivity().getResources().getDisplayMetrics().density);
 
 				// Set the metadata
 				byte[] metadata = null;
@@ -242,8 +256,7 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 
 	@Override
 	public void onExplanationNeeded(final List<String> list) {
-		Toast.makeText(getContext(), "This app needs location permissions to enable mapping functionality", Toast.LENGTH_LONG)
-		     .show();
+		Toast.makeText(getContext(), "This app needs location permissions to enable mapping functionality", Toast.LENGTH_LONG).show();
 	}
 
 	@Override
