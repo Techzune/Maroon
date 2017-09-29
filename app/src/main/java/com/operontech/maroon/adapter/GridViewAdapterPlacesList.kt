@@ -48,6 +48,7 @@ class GridViewAdapterPlacesList(val placeListings: MutableList<PlaceListing>, va
                 beginTransaction()
                         .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
                         .replace(R.id.main_fragment, frag)
+                        .addToBackStack(null)
                         .commit()
             }
         }
