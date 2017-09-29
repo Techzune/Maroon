@@ -32,7 +32,6 @@ class FragmentPlacesList : Fragment() {
         ButterKnife.bind(this, view)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.setHasFixedSize(true)
-        //recyclerView.setOnClickListener(AdapterView.OnClickListener())
         setupAdapter()
         return view
     }
@@ -57,7 +56,7 @@ class FragmentPlacesList : Fragment() {
                     }
                 }
 
-                recyclerView.adapter = GridViewAdapterPlacesList(listings)
+                recyclerView.adapter = GridViewAdapterPlacesList(listings, fragmentManager)
                 progressLayout.visibility = View.GONE
             }
 
