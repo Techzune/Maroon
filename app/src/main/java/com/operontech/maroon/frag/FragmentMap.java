@@ -3,6 +3,7 @@ package com.operontech.maroon.frag;
 import android.annotation.SuppressLint;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.*;
@@ -50,6 +51,9 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 
 	@BindView(R.id.map_bottomsheet_subtitle)
 	TextView bottomSheetSubtitle;
+
+	@BindView(R.id.map_bottomsheet_fab)
+	FloatingActionButton bottomSheetFAB;
 
 	private static final String TAG = "Maroon";
 	private PlaceListing currentListing = null;
@@ -271,6 +275,7 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 
 		// Hide the bottom sheet
 		bottomSheetLayout.setVisibility(View.GONE);
+		bottomSheetFAB.setVisibility(View.GONE);
 	}
 
 	public void showPlaceOnMap(final boolean animateCamera) {
@@ -289,6 +294,7 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 
 		// Display the bottom sheet
 		bottomSheetLayout.setVisibility(View.VISIBLE);
+		bottomSheetFAB.setVisibility(View.VISIBLE);
 	}
 
 	@Override
