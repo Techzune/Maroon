@@ -57,6 +57,7 @@
             android:layout_margin="16dp"
             android:src="@drawable/ic_walk_white"
             android:backgroundTint="@color/colorGold"
+            app:rippleColor="@color/colorGoldDark"
             android:visibility="gone"
             app:layout_anchor="@+id/map_bottomsheet_layout"
             app:layout_anchorGravity="top|end"/>
