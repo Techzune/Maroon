@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import com.mapbox.mapboxsdk.annotations.Marker;
+import com.mapbox.mapboxsdk.annotations.MarkerOptions;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.constants.MyLocationTracking;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -269,7 +271,17 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 	}
 
 	public void showPlaceOnMap(final boolean animateCamera) {
+		// Move the camera to the place
 		moveCamera(animateCamera, currentListing.getLatLng(), 17f);
+
+		// Add the marker to the screen
+		Marker mark = mMap.addMarker(new MarkerOptions()
+				.position(currentListing.getLatLng())
+				.title(currentListing.getTitle())
+				.snippet(currentListing.getDescription()));
+
+		// Display the marker's info window
+		mMap.selectMarker(mark);
 	}
 
 	@Override
