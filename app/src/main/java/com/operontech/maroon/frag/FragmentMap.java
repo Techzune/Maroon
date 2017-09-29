@@ -283,6 +283,10 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 		// Display the marker's info window
 		mMap.selectMarker(mark);
 
+		// Add information to the bottom sheet
+		bottomSheetTitle.setText(currentListing.getTitle());
+		bottomSheetSubtitle.setText("a few minutes walk");
+
 		// Display the bottom sheet
 		bottomSheetLayout.setVisibility(View.VISIBLE);
 	}
