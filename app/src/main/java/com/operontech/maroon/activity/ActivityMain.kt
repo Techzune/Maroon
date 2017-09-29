@@ -19,6 +19,7 @@ import com.operontech.maroon.frag.FragmentHome
 import com.operontech.maroon.frag.FragmentMap
 import com.operontech.maroon.frag.FragmentPlacesTypes
 
+
 class ActivityMain : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private var backButtonExitTriggered = false
 
@@ -49,6 +50,23 @@ class ActivityMain : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         // Set up Mapbox
         Mapbox.getInstance(this@ActivityMain, getString(R.string.mapbox_access_token))
+
+        supportFragmentManager.addOnBackStackChangedListener({
+            if (supportFragmentManager.backStackEntryCount > 0) {
+                // Show UP/BACK if back stack exists
+                supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+                toolbar.setNavigationOnClickListener({
+                    onBackPressed()
+                })
+            } else {
+                // Show Hamburger if no back stack
+                supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+                toggle.syncState()
+                toolbar.setNavigationOnClickListener({
+                    drawerLayout.openDrawer(GravityCompat.START)
+                })
+            }
+        })
     }
 
     override fun onBackPressed() {
