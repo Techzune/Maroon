@@ -85,8 +85,8 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 
 				// Create a bounding box for the offline region
 				final LatLngBounds latLngBounds = new LatLngBounds.Builder().include(new LatLng(33.468301, -88.775908)) // NE
-						.include(new LatLng(33.447141, -88.805906)) // SW
-						.build();
+				                                                            .include(new LatLng(33.447141, -88.805906)) // SW
+				                                                            .build();
 
 				// Define the offline region
 				final OfflineTilePyramidRegionDefinition definition = new OfflineTilePyramidRegionDefinition(mapboxMap.getStyleUrl(), latLngBounds, 10, 20, getActivity().getResources().getDisplayMetrics().density);
@@ -268,6 +268,9 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 
 		// Center the camera on Mississippi State University's Drill Field
 		moveCamera(animateCamera, new LatLng(33.45405991916038, -88.78927499055862), 15.5f);
+
+		// Hide the bottom sheet
+		bottomSheetLayout.setVisibility(View.GONE);
 	}
 
 	public void showPlaceOnMap(final boolean animateCamera) {
@@ -275,13 +278,13 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 		moveCamera(animateCamera, currentListing.getLatLng(), 17f);
 
 		// Add the marker to the screen
-		Marker mark = mMap.addMarker(new MarkerOptions()
-				.position(currentListing.getLatLng())
-				.title(currentListing.getTitle())
-				.snippet(currentListing.getDescription()));
+		final Marker mark = mMap.addMarker(new MarkerOptions().position(currentListing.getLatLng()).title(currentListing.getTitle()).snippet(currentListing.getDescription()));
 
 		// Display the marker's info window
 		mMap.selectMarker(mark);
+
+		// Display the bottom sheet
+		bottomSheetLayout.setVisibility(View.VISIBLE);
 	}
 
 	@Override
