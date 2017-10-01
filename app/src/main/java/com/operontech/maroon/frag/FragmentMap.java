@@ -252,6 +252,7 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 		final Location lastLocation = locEngine.getLastLocation();
 		if (lastLocation != null) {
 			mMap.getTrackingSettings().setMyLocationTrackingMode(MyLocationTracking.TRACKING_FOLLOW);
+			mMap.animateCamera(CameraUpdateFactory.zoomTo(17f));
 		}
 	}
 
