@@ -3,8 +3,10 @@ package com.operontech.maroon.frag;
 import android.annotation.SuppressLint;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.*;
 import android.widget.LinearLayout;
@@ -14,6 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.mapbox.mapboxsdk.annotations.Marker;
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
+import com.mapbox.mapboxsdk.annotations.PolylineOptions;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.constants.MyLocationTracking;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -28,12 +31,23 @@ import com.mapbox.mapboxsdk.offline.OfflineTilePyramidRegionDefinition;
 import com.mapbox.services.android.telemetry.location.LocationEngine;
 import com.mapbox.services.android.telemetry.permissions.PermissionsListener;
 import com.mapbox.services.android.telemetry.permissions.PermissionsManager;
+import com.mapbox.services.api.directions.v5.DirectionsCriteria;
+import com.mapbox.services.api.directions.v5.MapboxDirections;
+import com.mapbox.services.api.directions.v5.models.DirectionsResponse;
+import com.mapbox.services.api.directions.v5.models.DirectionsRoute;
+import com.mapbox.services.commons.geojson.LineString;
+import com.mapbox.services.commons.models.Position;
 import com.operontech.maroon.R;
 import com.operontech.maroon.db.PlaceListing;
 import kotlin.text.Charsets;
 import org.json.JSONObject;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import java.util.List;
+
+import static com.mapbox.services.Constants.PRECISION_6;
 
 @SuppressLint("MissingPermission")
 public class FragmentMap extends Fragment implements PermissionsListener {
@@ -57,6 +71,7 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 
 	private static final String TAG = "Maroon";
 	private PlaceListing currentListing = null;
+	private DirectionsRoute currentRoute;
 
 	@Override
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
@@ -141,6 +156,14 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 
 		// Enable the MyLocation button
 		setHasOptionsMenu(true);
+
+		bottomSheetFAB.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				showRouteOnMap();
+			}
+		});
+
 		return view;
 	}
 
@@ -262,6 +285,85 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 	}
 
 	/**
+	 * Gets a route from Mapbox servers then draws on map
+	 * @param origin the start of the route
+	 * @param destination the end of the route
+	 * @param profile the profile of the route (walking, cycling, etc.)
+	 */
+	public void getRoute(final Position origin, final Position destination, String profile) {
+		MapboxDirections directions = new MapboxDirections.Builder()
+				.setOrigin(origin)
+				.setDestination(destination)
+				.setOverview(DirectionsCriteria.OVERVIEW_FULL)
+				.setProfile(profile)
+				.setAccessToken(getString(R.string.mapbox_access_token))
+				.build();
+		directions.enqueueCall(new Callback<DirectionsResponse>() {
+			@Override
+			public void onResponse(Call<DirectionsResponse> call, Response<DirectionsResponse> response) {
+				if (response.body()  == null) {
+					Log.e(TAG, "ERROR: No route was received!");
+					return;
+				} else if (response.body().getRoutes().size() < 1) {
+					Log.e(TAG, "ERROR: No route was received!");
+					return;
+				}
+
+				// Set the currentRoute
+				currentRoute = response.body().getRoutes().get(0);
+
+				// Update the bottomSheet text
+				final long routeDuration = Math.round(currentRoute.getDistance() / 60);
+				if (routeDuration > 1) {
+					bottomSheetSubtitle.setText(getString(R.string.map_duration_plural, routeDuration, Math.round(currentRoute.getDistance())));
+				}
+
+				// Draw the route
+				drawRoute(currentRoute);
+
+				// Deselect any selected markers on the map
+				mMap.deselectMarkers();
+
+				// Create a bounding box that contains the positions of both the start and end
+				final LatLngBounds latLngBounds = new LatLngBounds.Builder().include(new LatLng(origin.getLatitude(), origin.getLongitude()))
+				                                                            .include(new LatLng(destination.getLatitude(), destination.getLongitude()))
+				                                                            .build();
+
+				// Animate camera to that new bounding box
+				mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 250), 2000);
+
+			}
+
+			@Override
+			public void onFailure(Call<DirectionsResponse> call, Throwable t) {
+				Log.e(TAG, "Error: " + t.getMessage());
+				Toast.makeText(getContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+			}
+		});
+	}
+
+	/**
+	 * Draws a route on the map using Polyline
+	 * @param route the route to draw on the map
+	 */
+	private void drawRoute(DirectionsRoute route) {
+		LineString lineString = LineString.fromPolyline(route.getGeometry(), PRECISION_6);
+		List<Position> coordinates = lineString.getCoordinates();
+		LatLng[] points = new LatLng[coordinates.size()];
+		for (int i = 0; i < coordinates.size(); i++) {
+			points[i] = new LatLng(
+					coordinates.get(i).getLatitude(),
+					coordinates.get(i).getLongitude());
+		}
+
+		// Draw Points on MapView
+		mMap.addPolyline(new PolylineOptions()
+				.add(points)
+				.color(ContextCompat.getColor(getContext(), R.color.colorGold))
+				.width(5));
+	}
+
+	/**
 	 * Shows the default map for the view
 	 * Enabled GPS Permissions, then centers the camera on Mississippi State University's Drill Field
 	 * @param animateCamera if true, the camera will be animated
@@ -290,11 +392,31 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 
 		// Add information to the bottom sheet
 		bottomSheetTitle.setText(currentListing.getTitle());
-		bottomSheetSubtitle.setText("about a few minutes walk");
+		bottomSheetSubtitle.setText("");
 
-		// Display the bottom sheet
+		// Show the bottom sheet and FAB
 		bottomSheetLayout.setVisibility(View.VISIBLE);
 		bottomSheetFAB.setVisibility(View.VISIBLE);
+	}
+
+	public void showRouteOnMap() {
+		// Make sure we have a starting location
+		final Location lastLocation = locEngine.getLastLocation();
+		if (lastLocation != null) {
+			// Hide the FAB so we don't spam it
+			CoordinatorLayout.LayoutParams p = (CoordinatorLayout.LayoutParams) bottomSheetFAB.getLayoutParams();
+			p.setAnchorId(View.NO_ID);
+			bottomSheetFAB.setLayoutParams(p);
+			bottomSheetFAB.hide();
+
+			// Show the user's location
+			mMap.setMyLocationEnabled(true);
+
+			// Get the route and such
+			getRoute(Position.fromLngLat(lastLocation.getLongitude(), lastLocation.getLatitude()),
+					Position.fromLngLat(Double.valueOf(currentListing.getLongitude()), Double.valueOf(currentListing.getLatitude())),
+					DirectionsCriteria.PROFILE_WALKING);
+		}
 	}
 
 	@Override

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_duration_singular">about %1$d minute (%2$d m)</string>
+    <string name="map_duration_plural">about %1$d minutes (%2$d m)</string>
+</resources>
