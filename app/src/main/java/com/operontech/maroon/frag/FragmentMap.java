@@ -159,7 +159,7 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 
 		bottomSheetFAB.setOnClickListener(new View.OnClickListener() {
 			@Override
-			public void onClick(View view) {
+			public void onClick(final View view) {
 				showRouteOnMap();
 			}
 		});
@@ -291,18 +291,12 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 	 * @param destination the end of the route
 	 * @param profile the profile of the route (walking, cycling, etc.)
 	 */
-	public void getRoute(final Position origin, final Position destination, String profile) {
-		MapboxDirections directions = new MapboxDirections.Builder()
-				.setOrigin(origin)
-				.setDestination(destination)
-				.setOverview(DirectionsCriteria.OVERVIEW_FULL)
-				.setProfile(profile)
-				.setAccessToken(getString(R.string.mapbox_access_token))
-				.build();
+	public void getRoute(final Position origin, final Position destination, final String profile) {
+		final MapboxDirections directions = new MapboxDirections.Builder().setOrigin(origin).setDestination(destination).setOverview(DirectionsCriteria.OVERVIEW_FULL).setProfile(profile).setAccessToken(getString(R.string.mapbox_access_token)).build();
 		directions.enqueueCall(new Callback<DirectionsResponse>() {
 			@Override
-			public void onResponse(Call<DirectionsResponse> call, Response<DirectionsResponse> response) {
-				if (response.body()  == null) {
+			public void onResponse(final Call<DirectionsResponse> call, final Response<DirectionsResponse> response) {
+				if (response.body() == null) {
 					Log.e(TAG, "ERROR: No route was received!");
 					return;
 				} else if (response.body().getRoutes().size() < 1) {
@@ -326,9 +320,7 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 				mMap.deselectMarkers();
 
 				// Create a bounding box that contains the positions of both the start and end
-				final LatLngBounds latLngBounds = new LatLngBounds.Builder().include(new LatLng(origin.getLatitude(), origin.getLongitude()))
-				                                                            .include(new LatLng(destination.getLatitude(), destination.getLongitude()))
-				                                                            .build();
+				final LatLngBounds latLngBounds = new LatLngBounds.Builder().include(new LatLng(origin.getLatitude(), origin.getLongitude())).include(new LatLng(destination.getLatitude(), destination.getLongitude())).build();
 
 				// Animate camera to that new bounding box
 				mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 250), 2000);
@@ -336,7 +328,7 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 			}
 
 			@Override
-			public void onFailure(Call<DirectionsResponse> call, Throwable t) {
+			public void onFailure(final Call<DirectionsResponse> call, final Throwable t) {
 				Log.e(TAG, "Error: " + t.getMessage());
 				Toast.makeText(getContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
 			}
@@ -347,21 +339,16 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 	 * Draws a route on the map using Polyline
 	 * @param route the route to draw on the map
 	 */
-	private void drawRoute(DirectionsRoute route) {
-		LineString lineString = LineString.fromPolyline(route.getGeometry(), PRECISION_6);
-		List<Position> coordinates = lineString.getCoordinates();
-		LatLng[] points = new LatLng[coordinates.size()];
+	private void drawRoute(final DirectionsRoute route) {
+		final LineString lineString = LineString.fromPolyline(route.getGeometry(), PRECISION_6);
+		final List<Position> coordinates = lineString.getCoordinates();
+		final LatLng[] points = new LatLng[coordinates.size()];
 		for (int i = 0; i < coordinates.size(); i++) {
-			points[i] = new LatLng(
-					coordinates.get(i).getLatitude(),
-					coordinates.get(i).getLongitude());
+			points[i] = new LatLng(coordinates.get(i).getLatitude(), coordinates.get(i).getLongitude());
 		}
 
 		// Draw Points on MapView
-		mMap.addPolyline(new PolylineOptions()
-				.add(points)
-				.color(ContextCompat.getColor(getContext(), R.color.colorGold))
-				.width(5));
+		mMap.addPolyline(new PolylineOptions().add(points).color(ContextCompat.getColor(getContext(), R.color.colorGold)).width(5));
 	}
 
 	/**
@@ -405,7 +392,7 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 		final Location lastLocation = locEngine.getLastLocation();
 		if (lastLocation != null) {
 			// Hide the FAB so we don't spam it
-			CoordinatorLayout.LayoutParams p = (CoordinatorLayout.LayoutParams) bottomSheetFAB.getLayoutParams();
+			final CoordinatorLayout.LayoutParams p = (CoordinatorLayout.LayoutParams) bottomSheetFAB.getLayoutParams();
 			p.setAnchorId(View.NO_ID);
 			bottomSheetFAB.setLayoutParams(p);
 			bottomSheetFAB.hide();
@@ -414,9 +401,7 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 			mMap.setMyLocationEnabled(true);
 
 			// Get the route and such
-			getRoute(Position.fromLngLat(lastLocation.getLongitude(), lastLocation.getLatitude()),
-					Position.fromLngLat(Double.valueOf(currentListing.getLongitude()), Double.valueOf(currentListing.getLatitude())),
-					DirectionsCriteria.PROFILE_WALKING);
+			getRoute(Position.fromLngLat(lastLocation.getLongitude(), lastLocation.getLatitude()), Position.fromLngLat(Double.valueOf(currentListing.getLongitude()), Double.valueOf(currentListing.getLatitude())), DirectionsCriteria.PROFILE_WALKING);
 		}
 	}
 
