@@ -18,6 +18,7 @@ import com.operontech.maroon.R
 import com.operontech.maroon.frag.FragmentHome
 import com.operontech.maroon.frag.FragmentMap
 import com.operontech.maroon.frag.FragmentPlacesTypes
+import net.danlew.android.joda.JodaTimeAndroid
 
 
 class ActivityMain : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -28,6 +29,9 @@ class ActivityMain : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Initialize Joda Time
+        JodaTimeAndroid.init(this)
 
         // Set up the main content (fragment)
         supportFragmentManager.beginTransaction().add(R.id.main_fragment, FragmentHome()).commit()
