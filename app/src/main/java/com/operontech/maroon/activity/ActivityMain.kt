@@ -109,6 +109,6 @@ class ActivityMain : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     companion object {
-        public val MAROON_TAG = "Maroon"
+        const val MAROON_TAG = "Maroon"
     }
 }

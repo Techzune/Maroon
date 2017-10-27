@@ -48,6 +48,7 @@ import retrofit2.Response;
 import java.util.List;
 
 import static com.mapbox.services.Constants.PRECISION_6;
+import static com.operontech.maroon.activity.ActivityMain.MAROON_TAG;
 
 @SuppressLint("MissingPermission")
 public class FragmentMap extends Fragment implements PermissionsListener {
@@ -69,7 +70,6 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 	@BindView(R.id.map_bottomsheet_fab)
 	FloatingActionButton bottomSheetFAB;
 
-	private static final String TAG = "Maroon";
 	private PlaceListing currentListing = null;
 	private DirectionsRoute currentRoute;
 
@@ -108,7 +108,9 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 				                                                            .build();
 
 				// Define the offline region
-				final OfflineTilePyramidRegionDefinition definition = new OfflineTilePyramidRegionDefinition(mapboxMap.getStyleUrl(), latLngBounds, 10, 20, getActivity().getResources().getDisplayMetrics().density);
+				final OfflineTilePyramidRegionDefinition definition = new OfflineTilePyramidRegionDefinition(mapboxMap.getStyleUrl(), latLngBounds, 10, 20, getActivity()
+						.getResources()
+						.getDisplayMetrics().density);
 
 				// Complete the setup for the offline region
 				final byte[] metadata;
@@ -128,11 +130,11 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 
 						@Override
 						public void onError(final String error) {
-							Log.e(TAG, "Error: " + error);
+							Log.e(MAROON_TAG, "Error: " + error);
 						}
 					});
 				} catch (final Exception exception) {
-					Log.e(TAG, "Failed to encode metadata: " + exception.getMessage());
+					Log.e(MAROON_TAG, "Failed to encode metadata: " + exception.getMessage());
 				}
 			}
 		});
@@ -292,15 +294,20 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 	 * @param profile the profile of the route (walking, cycling, etc.)
 	 */
 	public void getRoute(final Position origin, final Position destination, final String profile) {
-		final MapboxDirections directions = new MapboxDirections.Builder().setOrigin(origin).setDestination(destination).setOverview(DirectionsCriteria.OVERVIEW_FULL).setProfile(profile).setAccessToken(getString(R.string.mapbox_access_token)).build();
+		final MapboxDirections directions = new MapboxDirections.Builder().setOrigin(origin)
+		                                                                  .setDestination(destination)
+		                                                                  .setOverview(DirectionsCriteria.OVERVIEW_FULL)
+		                                                                  .setProfile(profile)
+		                                                                  .setAccessToken(getString(R.string.mapbox_access_token))
+		                                                                  .build();
 		directions.enqueueCall(new Callback<DirectionsResponse>() {
 			@Override
 			public void onResponse(final Call<DirectionsResponse> call, final Response<DirectionsResponse> response) {
 				if (response.body() == null) {
-					Log.e(TAG, "ERROR: No route was received!");
+					Log.e(MAROON_TAG, "ERROR: No route was received!");
 					return;
 				} else if (response.body().getRoutes().size() < 1) {
-					Log.e(TAG, "ERROR: No route was received!");
+					Log.e(MAROON_TAG, "ERROR: No route was received!");
 					return;
 				}
 
@@ -310,7 +317,8 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 				// Update the bottomSheet text
 				final long routeDuration = Math.round(currentRoute.getDistance() / 60);
 				if (routeDuration > 1) {
-					bottomSheetSubtitle.setText(getString(R.string.map_duration_plural, routeDuration, Math.round(currentRoute.getDistance())));
+					bottomSheetSubtitle.setText(getString(R.string.map_duration_plural, routeDuration, Math.round(currentRoute
+							.getDistance())));
 				}
 
 				// Draw the route
@@ -320,7 +328,10 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 				mMap.deselectMarkers();
 
 				// Create a bounding box that contains the positions of both the start and end
-				final LatLngBounds latLngBounds = new LatLngBounds.Builder().include(new LatLng(origin.getLatitude(), origin.getLongitude())).include(new LatLng(destination.getLatitude(), destination.getLongitude())).build();
+				final LatLngBounds latLngBounds = new LatLngBounds.Builder().include(new LatLng(origin.getLatitude(), origin
+						.getLongitude())).include(new LatLng(destination.getLatitude(), destination
+						                                                            .getLongitude()))
+				                                                            .build();
 
 				// Animate camera to that new bounding box
 				mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 250), 2000);
@@ -329,7 +340,7 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 
 			@Override
 			public void onFailure(final Call<DirectionsResponse> call, final Throwable t) {
-				Log.e(TAG, "Error: " + t.getMessage());
+				Log.e(MAROON_TAG, "Error: " + t.getMessage());
 				Toast.makeText(getContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
 			}
 		});
@@ -348,7 +359,9 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 		}
 
 		// Draw Points on MapView
-		mMap.addPolyline(new PolylineOptions().add(points).color(ContextCompat.getColor(getContext(), R.color.colorGold)).width(5));
+		mMap.addPolyline(new PolylineOptions().add(points)
+		                                      .color(ContextCompat.getColor(getContext(), R.color.colorGold))
+		                                      .width(5));
 	}
 
 	/**
@@ -373,7 +386,9 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 		moveCamera(animateCamera, currentListing.getLatLng(), 17f);
 
 		// Add the marker to the screen
-		final Marker mark = mMap.addMarker(new MarkerOptions().position(currentListing.getLatLng()).title(currentListing.getTitle()).snippet(currentListing.getDescription()));
+		final Marker mark = mMap.addMarker(new MarkerOptions().position(currentListing.getLatLng())
+		                                                      .title(currentListing.getTitle())
+		                                                      .snippet(currentListing.getDescription()));
 
 		// Display the marker's info window
 		mMap.selectMarker(mark);
@@ -401,13 +416,15 @@ public class FragmentMap extends Fragment implements PermissionsListener {
 			mMap.setMyLocationEnabled(true);
 
 			// Get the route and such
-			getRoute(Position.fromLngLat(lastLocation.getLongitude(), lastLocation.getLatitude()), Position.fromLngLat(Double.valueOf(currentListing.getLongitude()), Double.valueOf(currentListing.getLatitude())), DirectionsCriteria.PROFILE_WALKING);
+			getRoute(Position.fromLngLat(lastLocation.getLongitude(), lastLocation.getLatitude()), Position.fromLngLat(Double
+					.valueOf(currentListing.getLongitude()), Double.valueOf(currentListing.getLatitude())), DirectionsCriteria.PROFILE_WALKING);
 		}
 	}
 
 	@Override
 	public void onExplanationNeeded(final List<String> list) {
-		Toast.makeText(getContext(), "This app needs location permissions to enable mapping functionality", Toast.LENGTH_LONG).show();
+		Toast.makeText(getContext(), "This app needs location permissions to enable mapping functionality", Toast.LENGTH_LONG)
+		     .show();
 	}
 
 	@Override
