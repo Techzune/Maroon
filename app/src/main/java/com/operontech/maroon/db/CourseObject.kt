@@ -1,6 +1,6 @@
 package com.operontech.maroon.db
 
-data class Course(
+data class CourseObject(
         val subject: String? = "",
         val number: Int = 0,
         val section: Int = 0,
