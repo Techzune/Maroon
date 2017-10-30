@@ -2,4 +2,4 @@ package com.operontech.maroon.db
 
 import org.joda.time.LocalTime
 
-data class CourseTime(var start: LocalTime,var end: LocalTime)
+data class CourseTime(var start: LocalTime, var end: LocalTime, var building: String, var room: String)
