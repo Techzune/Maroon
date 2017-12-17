@@ -21,17 +21,17 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.firebase:firebase-database:11.4.2'
+    implementation 'com.google.firebase:firebase-database:11.6.2'
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:4.12'
-    compile('com.mapbox.mapboxsdk:mapbox-android-sdk:5.1.4@aar') {
+    compile('com.mapbox.mapboxsdk:mapbox-android-sdk:5.2.1@aar') {
         transitive = true
     }
     compile 'net.danlew:android.joda:2.9.9'
-    compile 'com.mapbox.mapboxsdk:mapbox-android-services:2.2.5'
+    compile 'com.mapbox.mapboxsdk:mapbox-android-services:2.2.9'
     compile "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     compile "com.android.support:support-v4:${rootProject.ext.supportLibVersion}"
     compile "com.android.support:cardview-v7:${rootProject.ext.supportLibVersion}"
